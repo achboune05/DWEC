@@ -1,19 +1,25 @@
         
-        let entrada = prompt('Introduce la hora de entrada en HH:MM: ');
+        document.getElementById('formulario').addEventListener("submit", function(e){
+            e.preventDefault();
 
-        while(!esHoraValida(entrada)){
-            prompt('Hora no valida.Introduce la hora de entrada en HH:MM: ')
-        }
 
-        let salida = prompt('Introduce la hora de salida en HH:MM:  ');
+            const entrada= document.getElementById("entrada").value;
+            const salida= document.getElementById("salida").value;
+            const descuento= document.getElementById("descuento").value
+            const resultado = document.getElementById("resultado");
+            
+            if(!esHoraValida(entrada) || !esHoraValida(salida)){
+                resultado.textContent = "Hora invalida. Usa el formato HH:MM";
+                return;
+            }
 
-        while(!esHoraValida(salida)){
-            prompt('Hora no valida.Introduce la hora de salida en HH:MM: ')
-        }
+            const minutos=calcularDuracion(entrada,salida);
+
+            resultado.textContent= "Duracion: "+formatearDuracion(minutos);
+
+        })
 
       
-        const minutos= calcularDuracion(entrada,salida);
-        console.log(formatearDuracion(minutos));
 
 
         
@@ -62,5 +68,43 @@
             let minutos= duracionM%60;
 
             
-            return console.log(`La duracion fue de: `+horas+`h y `+minutos+` minutos` );
+            return "La duracion fue de: "+horas+"h y "+minutos+"minutos";
+        }
+
+        function calcularImporteBase(duracionM){
+            let importe= 0;
+
+            for(let i= 0; i<=duracionM; i++){
+                if(i>300){
+                    importe += 0.01;
+                }else if(i>120){
+                    importe += 0.02;
+                }else if(i>30){
+                    importe += 0.03
+                }
+            }
+
+            if(importe>18){
+                importe =18;
+            }
+            return importe
+        }
+
+
+        function sinDescuento(importe){
+            return importe;
+        }
+
+
+
+        function descuentoElectrico(importe){
+            return importe-((importe/100)*20);
+        }
+
+        function descuentoResidente(importe){
+            return importe-((importe/100)*30);
+        }
+
+        function calcularImporteFinal(importeBase,aplicarDescuento){
+            
         }
