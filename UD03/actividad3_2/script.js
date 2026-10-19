@@ -17,7 +17,40 @@
 
             resultado.textContent= "Duracion: "+formatearDuracion(minutos);
 
-        })
+
+            const importeBase= calcularImporteBase(minutos);
+
+            let functionDescuento = sinDescuento;
+            let nombreDescuento = "Sin Descuento";
+
+            if(descuento === "2"){
+                functionDescuento= descuentoElectrico;
+                nombreDescuento = "Descuento Electrico";
+            }else if(descuento === "3"){
+                functionDescuento= descuentoResidente;
+                nombreDescuento= "Descuento Residente";
+            }
+
+
+            // Aplicar Descuento 
+
+            const ImporteFinal = calcularImporteFinal(importeBase,functionDescuento);
+            const descontado = importeBase-ImporteFinal;
+
+            resultado.innerHTML =
+
+            "<h2>RESUMEN</h2>"+
+            "Entrada: "+entrada+"<br>"+
+            "Salida: "+salida+"<br>"+
+            "Duracion: "+formatearDuracion(minutos)+"<br>"+
+            "Importe Base: "+importeBase.toFixed(2)+"<br>"+
+            nombreDescuento+": "+descontado.toFixed(2)+"<br>"+
+            "Importe Final: "+ImporteFinal.toFixed(2)+"€";
+
+
+            
+
+        });
 
       
 
@@ -106,5 +139,5 @@
         }
 
         function calcularImporteFinal(importeBase,aplicarDescuento){
-            
+            return aplicarDescuento(importeBase)
         }
