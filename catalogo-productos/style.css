@@ -1,0 +1,66 @@
+body {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f8fafc;
+}
+
+h1 {
+  text-align: center;
+}
+
+.llista-productes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.producte {
+  padding: 20px;
+  background-color: white;
+  border: 2px solid #2563eb;
+  border-radius: 8px;
+}
+
+.producte h2 {
+  margin-top: 0;
+}
+
+.producte_preu {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.producte_estoc {
+  color: #166534;
+}
+
+.producte-esgotat {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+  opacity: 0.75;
+}
+
+.producte-esgotat .producte_estoc {
+  color: #b91c1c;
+  font-weight: bold;
+}
+
+button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  color: white;
+  font-size: 1rem;
+  background-color: #2563eb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  color: #4b5563;
+  background-color: #d1d5db;
+  cursor: not-allowed;
+}

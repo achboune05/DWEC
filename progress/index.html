@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barra de progrés</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Barra de progrés</h1>
+    <div class="progres">
+      <div id="barra" class="barra"></div>
+    </div>
+
+    <p>Progrés actual:<strong> <span id="valorPercentatge">0</span>% </strong></p>
+    <div class="control">
+      <label for="selectorPercentatge"> Selecciona el percentatge </label>
+      <input id="selectorPercentatge" type="range" min="0" max="100" value="0" />
+    </div>
+
+    <h2>Validació del nom</h2>
+    <form id="formulari">
+      <label for="nom">Nom</label>
+      <input id="nom" name="nom" type="text" />
+      <p id="missatge" class="missatge"></p>
+      <button type="submit">Comprovar</button>
+    </form>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
